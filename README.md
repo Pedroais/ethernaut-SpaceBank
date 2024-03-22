@@ -20,4 +20,4 @@ The SpaceBank starts with a balance of 1000 SpaceTokens.
 In this workshop, we will complete the attacker contract found in contracts/contracts/attacks/SpaceBankAttack.sol and the test file in 
 contracts/test/levels/SpaceBank.test.js. You should use the test file to call the SpaceBank (using the attacker contract if needed).
 
-To run the tests first cd into the contracts folder. Thenm, install hardhat with yarn add hardhat (you need node installed). Finally run npx hardhat test.
+To run the tests first cd into the contracts folder. Then, install hardhat with yarn add hardhat (you need node installed). Finally run npx hardhat test.
