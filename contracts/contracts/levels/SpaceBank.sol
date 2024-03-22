@@ -88,14 +88,8 @@ contract SpaceBank {
         if (EmergencyAlarms==2){
              //second alarm 
         bytes32 MagicNumber = bytes32(block.number);
-        uint balance = address(this).balance;
-        address newContractAddress;
-        assembly {
-            newContractAddress := create2(0, add(data, 0x20), mload(data),MagicNumber)
-        }  
-            require (address(this).balance > balance,"You need to send ether to pass through security");    
-            _createdAddress = newContractAddress;
-            alarmTime = block.number;
+ 
+        alarmTime = block.number;
 
 
         }
@@ -109,13 +103,7 @@ contract SpaceBank {
 
     ///Make the bank explode 
     function explodeSpaceBank() external { 
-        require (block.number == alarmTime+2,"Can't explode the bank"); 
-        uint256 codeSize;
-        address value = _createdAddress;
-        assembly {
-            codeSize := extcodesize(value) 
-        }
-        require(codeSize==0,"You were caught");
+        require (block.number == alarmTime+2,"Can't explode the bank");         
         require(token.balanceOf(address(this))==0,"The bank still has funds");
         exploded = true; 
     }
