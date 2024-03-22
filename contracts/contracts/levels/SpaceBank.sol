@@ -75,13 +75,7 @@ contract SpaceBank {
        
         require(number==block.number%47,"Wrong passphrase"); 
                      //second alarm  
-        alarmTime = block.number;
-
-
-        
-
-        
-    
+        alarmTime = block.number;    
     }
 
 
