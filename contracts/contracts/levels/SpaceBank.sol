@@ -8,8 +8,7 @@ interface IFlashLoanReceiver {
 }
 ///@author Pedro Aisenson
 contract SpaceBank {
-    //Number of alarm activations
-    uint256 EmergencyAlarms;
+
     //Token of the bank
     IERC20 public token;
     //Depositor balances
@@ -25,7 +24,6 @@ contract SpaceBank {
 
     modifier _emergencyAlarms(uint256 number){
         if(entered=true){
-        EmergencyAlarms++; //Sound the alarm and activate the security protocol
         _emergencyAlarmProtocol(number);
         }
         _;
@@ -74,19 +72,14 @@ contract SpaceBank {
 
     //Alarms will be activated to protect from thiefs
     function _emergencyAlarmProtocol(uint256 number)internal{
-        if(EmergencyAlarms==1){ 
-            //first alarm
+       
         require(number==block.number%47,"Wrong passphrase"); 
-        }
-        if (EmergencyAlarms==2){
-             //second alarm  
+                     //second alarm  
         alarmTime = block.number;
 
 
-        }
-        if (EmergencyAlarms==3){
-            revert("Third alarm, bank is locked");
-        }
+        
+
         
     
     }
