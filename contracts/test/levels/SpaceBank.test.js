@@ -49,6 +49,7 @@ contract('SpaceBank', function (accounts) {
       player,
       SpaceBank
     );
+const attacker = await SpaceBankAttack.new(instance.address);
 
 ////Do your attack here to solve the level
 
