@@ -18,19 +18,15 @@ contract SpaceBank {
     bool entered;
 
 
-
-    address internal _createdAddress;
-
     uint256 alarmTime;
 
     bool public exploded;
 
-    bool locked; //If this is true the bank will be locked forever. 
 
-    modifier _emergencyAlarms(bytes calldata data){
+    modifier _emergencyAlarms(uint256 number){
         if(entered=true){
         EmergencyAlarms++; //Sound the alarm and activate the security protocol
-        _emergencyAlarmProtocol(data);
+        _emergencyAlarmProtocol(number);
         }
         _;
     }
@@ -41,7 +37,7 @@ contract SpaceBank {
     }   
     
     //Deposit into the bank
-    function deposit(uint256 amount,bytes calldata data) external _emergencyAlarms(data) {
+    function deposit(uint256 amount,uint256 number) external _emergencyAlarms(number) {
         require(token.transferFrom(msg.sender, address(this), amount), "Transfer failed");
         balances[msg.sender] += amount;
         
@@ -77,18 +73,13 @@ contract SpaceBank {
 
 
     //Alarms will be activated to protect from thiefs
-    function _emergencyAlarmProtocol(bytes memory data)internal{
+    function _emergencyAlarmProtocol(uint256 number)internal{
         if(EmergencyAlarms==1){ 
             //first alarm
-        uint256 MagicNumber = block.number;
-
-        uint x = abi.decode(data,(uint));
-        require(x==MagicNumber%47,"Wrong passphrase"); 
+        require(number==block.number%47,"Wrong passphrase"); 
         }
         if (EmergencyAlarms==2){
-             //second alarm 
-        bytes32 MagicNumber = bytes32(block.number);
- 
+             //second alarm  
         alarmTime = block.number;
 
 
