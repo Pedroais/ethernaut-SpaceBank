@@ -7,6 +7,21 @@ Ethernaut is a Web3/Solidity based wargame inspired by [overthewire](https://ove
 
 The game acts both as a tool for those interested in learning ethereum, and as a way to catalogue historical hacks as levels. There can be an infinite number of levels and the game does not require to be played in any particular order.
 
+## SpaceBank Workshop
+
+The objective of the workshop if to solve the SpaceBank level, learn a bit about smart contracts and solidity and for hackaton participants to familiarize themselves with the structure of an ethernaut level
+
+For this workshop, we will focus on solving the SpaceBank challenge. You can find the challenge in contracts/contracts/levels/SpaceBank.sol. 
+
+The formidable Space Bank is known for its stringent security systems and vast reserves of space tokens (Galactic credits). Outsmart two state-of-the-art alarms, steal the tokens, and then detonate the bank to claim victory.
+
+The SpaceBank starts with a balance of 1000 SpaceTokens.
+
+In this workshop, we will complete the attacker contract found in contracts/contracts/attacks/SpaceBankAttack.sol and the test file in 
+contracts/test/levels/SpaceBank.test.js.
+
+Use the time to reflect on how to solve the level and start crafting the
+
 ## Deployed Versions
 
 You can find the current, official version at: [ethernaut.openzeppelin.com](https://ethernaut.openzeppelin.com)
